@@ -5,10 +5,23 @@ import Chat from '@/pages/Chat'
 import Login from '@/pages/Login'
 import Profile from '@/pages/Profile'
 import Register from '@/pages/Register'
+import { useDispatch, useSelector } from 'react-redux'
+import { setAuth } from '@/store/slice/authSlice'
+import { useEffect } from 'react'
 
 const App = () => {
-  const isAuth = false
+  const isAuth = useSelector((state: any) => state.auth.isAuth);
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    // Check for access_token in localStorage and update isAuth accordingly
+    const access_token = localStorage.getItem('access_token');
+    const isAuthenticated = !!access_token; // Set isAuth to true if access_token exists
+
+    dispatch(setAuth(isAuthenticated));
+  }, [dispatch]);
+
+  
   if (!isAuth) {
     return (
       <Routes>

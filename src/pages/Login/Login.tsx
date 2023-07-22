@@ -2,45 +2,37 @@ import * as S from '@/styled/Global.styled'
 import { REGISTER_ROUTE } from '@/utils/routes'
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
-import {toast} from 'react-toastify'
-
-type FormData = {
-  email: string
-  password: string
-}
+import { useDispatch } from 'react-redux'
+import { setAuth } from '@/store/slice/authSlice'
+import type { TLogin } from '@/types'
+import { errorsHandler } from '@/utils/globalMethods/errorsHandler'
 
 const Login = () => {
+  const dispatch = useDispatch()
+
   const API_BASE_URL = 'http://localhost:5000'
   const {
     register,
     setValue,
     handleSubmit,
     formState: { errors }
-  } = useForm<FormData>()
-  const onSubmit = handleSubmit(data => {
-    axios
+  } = useForm<TLogin>()
+
+  const login = async ({ email, password }: TLogin) => {
+    await axios
       .post(`${API_BASE_URL}/auth/login`, {
-        email: data.email,
-        password: data.password
+        email: email,
+        password: password
       })
-      .then(({data}) => {
-        console.log(data.access_token)
+      .then(({ data }) => {
         localStorage.setItem('access_token', data.access_token)
-        // setData(response.data)
+        dispatch(setAuth(true))
       })
-      .catch(error => {
-        console.log(error)
-        toast.error(error.response.data.message, {
-          position: "bottom-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: false,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
-          });
-      })
+      .catch(error => errorsHandler(error.response.data.message))
+  }
+
+  const onSubmit = handleSubmit(data => {
+    login(data)
   })
 
   const styleInput = {
