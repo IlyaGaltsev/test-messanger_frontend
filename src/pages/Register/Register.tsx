@@ -1,80 +1,84 @@
 import { setAuth } from '@/store/slice/authSlice'
-import * as S from '@/styled/Global.styled'
 import { TRegister, TLogin } from '@/types'
-import { errorsHandler } from '@/utils/globalMethods/errorsHandler'
-import { LOGIN_ROUTE } from '@/utils/routes'
-import axios from 'axios'
-import { useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
+import { useForm } from 'react-hook-form'
+
+import { errorsHandler, errorsHandlerWithValidate } from '@/utils/globalMethods/errorsHandler'
+import { optionsRegister } from '@/utils/customInputsOptions'
+import { setToken } from '@/utils/globalMethods/tokenMethods'
+import { LOGIN_ROUTE } from '@/utils/routes'
+import $axios from '@/utils/setupAxios'
+
+import CustomInput from '@/components/CustomInput'
+
+import { styleInput } from '@/styled/customInput.styled'
+import * as S from '@/styled/Global.styled'
 
 const Register = () => {
   const dispatch = useDispatch()
-
-  const API_BASE_URL = 'http://localhost:5000'
   const {
     register,
-    setValue,
+    setError,
     handleSubmit,
     formState: { errors }
   } = useForm<TRegister>()
 
-  const login = async ({ email, password }: TLogin) => {
-    await axios
-      .post(`${API_BASE_URL}/auth/login`, {
-        email: email,
-        password: password
-      })
-      .then(({ data }) => {
-        localStorage.setItem('access_token', data.access_token)
-        dispatch(setAuth(true))
-      })
-      .catch(error => errorsHandler(error.response.data.message))
-  }
+  const onSubmit = handleSubmit(data => createAccount(data))
 
   const createAccount = async ({ name, email, password }: TRegister) => {
-    await axios
-      .post(`${API_BASE_URL}/auth/register`, {
-        name: name,
-        email: email,
-        password: password
+    await $axios.post(`/auth/register`, {
+        name,
+        email,
+        password
       })
-      .then(() => {
-        login({
+      .then(() => login({
           email,
           password
         })
-      })
+      )
       .catch(error => errorsHandler(error.response.data.message))
   }
 
-  const onSubmit = handleSubmit(data => createAccount(data))
-
-  const styleInput = {
-    marginBottom: 16
+  const login = async ({ email, password }: TLogin) => {
+    await $axios.post(`/auth/login`, {
+        email,
+        password
+      })
+      .then(({ data }) => {
+        setToken(data.access_token)
+        dispatch(setAuth(true))
+      })
+      .catch(error => errorsHandlerWithValidate(error, setError))
   }
 
   return (
-    <S.Wrapper onSubmit={onSubmit}>
-      <S.Title>Регистрация</S.Title>
-      <S.SubTitle>для продолжения заполните поля</S.SubTitle>
-      <S.Input
+    <S.AuthFormWrapper onSubmit={onSubmit}>
+      <S.BaseTitle>Регистрация</S.BaseTitle>
+      <S.BaseSubTitle>для продолжения заполните поля</S.BaseSubTitle>
+
+      <CustomInput
         placeholder="Введите имя"
-        {...register('name')}
-        {...styleInput}
+        params={{ ...register('name', optionsRegister.name) }}
+        error={errors.password?.message}
+        style={styleInput}
       />
-      <S.Input
-        placeholder="Введите email"
-        {...register('email')}
-        {...styleInput}
+      <CustomInput
+        placeholder="Введите электронную почту"
+        params={{ ...register('email', optionsRegister.email) }}
+        error={errors.email?.message}
+        style={styleInput}
       />
-      <S.Input
+      <CustomInput
         placeholder="Введите пароль"
-        {...register('password')}
-        {...styleInput}
+        params={{ ...register('password', optionsRegister.password) }}
+        error={errors.password?.message}
+        type="password"
+        style={styleInput}
       />
-      <S.AccentButton>Создать аккаунт</S.AccentButton>
-      <S.Link to={LOGIN_ROUTE}>у меня есть аккаунт</S.Link>
-    </S.Wrapper>
+
+      <S.BaseAccentButton>Создать аккаунт</S.BaseAccentButton>
+      <S.BaseLink to={LOGIN_ROUTE}>у меня есть аккаунт</S.BaseLink>
+    </S.AuthFormWrapper>
   )
 }
 

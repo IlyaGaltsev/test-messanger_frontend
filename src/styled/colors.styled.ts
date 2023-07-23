@@ -8,3 +8,5 @@ export const FONT_PRIMARY_COLOR = '#FFFFFF'
 export const FONT_SECOUNDARY_COLOR = 'rgba(255, 255, 255, 0.25)'
 
 export const SUCCESS_COLOR = '#00FF75'
+export const ERROR_COLOR = 'red'
+export const INPUT_ERROR_COLOR = '#EA5858'

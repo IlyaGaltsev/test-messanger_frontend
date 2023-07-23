@@ -1,5 +1,5 @@
 const Profile = () => {
-  return <div>Profile</div>
+  return <div>Раздел в раработке (тут можно будет настроить профиль)</div>
 }
 
 export default Profile

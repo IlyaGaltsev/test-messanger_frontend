@@ -1,8 +1,8 @@
 type BaseTypeComponent = {
-  marginTop?: number
-  marginBottom?: number
-  marginRight?: number
-  marginLeft?: number
+  margintop?: number
+  marginbottom?: number
+  marginright?: number
+  marginleft?: number
 }
 
 export type TInput = BaseTypeComponent & {};
