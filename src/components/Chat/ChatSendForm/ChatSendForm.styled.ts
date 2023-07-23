@@ -1,5 +1,5 @@
 import { FONT_SECOUNDARY_COLOR } from '@/styled/colors.styled'
-import { BaseAccentButton, BaseInput, BaseSubTitle, BaseTitle } from '@/styled/Global.styled'
+import { BaseAccentButton, BaseInput } from '@/styled/Global.styled'
 import { styled } from 'styled-components'
 
 export const Wrapper = styled.form`

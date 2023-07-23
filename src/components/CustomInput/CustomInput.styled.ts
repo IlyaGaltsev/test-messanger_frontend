@@ -1,4 +1,4 @@
-import { ERROR_COLOR, FONT_SECOUNDARY_COLOR, INPUT_ERROR_COLOR, PRIMARY_COLOR } from '@/styled/colors.styled'
+import { ERROR_COLOR, INPUT_ERROR_COLOR, PRIMARY_COLOR } from '@/styled/colors.styled'
 import { BaseInput, BaseSubTitle } from '@/styled/Global.styled'
 import { styled } from 'styled-components'
 
