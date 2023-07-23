@@ -10,7 +10,7 @@ import {
 import type { TInput } from './types'
 
 export const GlobalStyle = createGlobalStyle`
-  html, body {
+  html, body, #root{
     background-color: ${BACKGROUND_COLOR};
   }
 
@@ -83,16 +83,35 @@ export const GlobalStyle = createGlobalStyle`
     border: 0;
   }
 
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0);
+  }
+
+  html {
+    scrollbar-width: thin;
+  }
+
+  html::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  html::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0);
+  }
+
   #root {
     display: flex;
     flex-direction: column;
     align-items: center;
     font-family: "Monseratt", "Helvetica Neue", sans-serif;
-
   }
 `
 
-export const Wrapper = styled.form`
+export const BaseWrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin: 40px 0;
@@ -103,33 +122,33 @@ export const Wrapper = styled.form`
   background: ${SECOUNDARY_COLOR};
 `
 
-export const Title = styled.h2`
+export const BaseTitle = styled.h2`
   color: ${FONT_PRIMARY_COLOR};
   font-size: 24px;
   font-weight: 700;
   margin-bottom: 16px;
 `
 
-export const SubTitle = styled.p`
+export const BaseSubTitle = styled.p`
   color: ${FONT_PRIMARY_COLOR};
   font-weight: 400;
   margin-bottom: 20px;
 `
 
-export const Input = styled.input<TInput>`
+export const BaseInput = styled.input<TInput>`
   color: ${FONT_PRIMARY_COLOR};
   font-weight: 400;
   background: ${PRIMARY_COLOR};
   padding: 12px;
   font-size: 16px;
   border-radius: 10px;
-  margin-bottom: ${({ marginBottom }) => (marginBottom ? `${marginBottom}px` : 0)};
-  margin-top: ${({ marginTop }) => (marginTop ? `${marginTop}px` : 0)};
-  margin-left: ${({ marginLeft }) => (marginLeft ? `${marginLeft}px` : 0)};
-  margin-right: ${({ marginRight }) => (marginRight ? `${marginRight}px` : 0)};
+  margin-bottom: ${({ marginbottom }) => (marginbottom ? `${marginbottom}px` : 0)};
+  margin-top: ${({ margintop }) => (margintop ? `${margintop}px` : 0)};
+  margin-left: ${({ marginleft }) => (marginleft ? `${marginleft}px` : 0)};
+  margin-right: ${({ marginright }) => (marginright ? `${marginright}px` : 0)};
 `
 
-export const AccentButton = styled.button`
+export const BaseAccentButton = styled.button`
   background: ${ACCENT_COLOR};
   color: ${FONT_PRIMARY_COLOR};
   font-size: 16px;
@@ -137,9 +156,20 @@ export const AccentButton = styled.button`
   border-radius: 10px;
 `
 
-export const Link = styled(ReactRouterDomLink)`
+export const BaseLink = styled(ReactRouterDomLink)`
   color: ${ACCENT_COLOR};
   font-size: 16px;
   margin-top: 20px;
   align-self: center;
+`
+
+export const AuthFormWrapper = styled.form`
+  display: flex;
+  flex-direction: column;
+  margin: 40px 0;
+  padding: 28px 24px;
+  border-radius: 20px;
+  max-width: 500px;
+  width: 100%;
+  background: ${SECOUNDARY_COLOR};
 `
