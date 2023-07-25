@@ -21,7 +21,7 @@ const userProfileApi: any = createApi({
   }),
   endpoints: builder => ({
     getUserProfile: builder.query({
-      query: () => '/api/user/profile',
+      query: () => '/api/user/view',
     })
   })
 })
