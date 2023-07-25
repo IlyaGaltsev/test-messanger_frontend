@@ -6,9 +6,11 @@ import { useEffect } from 'react'
 import { getToken } from '@/utils/globalMethods/tokenMethods'
 import * as routes from '@/utils/routes'
 
+import Settings from '@/pages/Settings'
 import Register from '@/pages/Register'
-import Chat from '@/pages/Chat'
 import Login from '@/pages/Login'
+import Chat from '@/pages/Chat'
+import { BaseLink, BaseTitle } from '@/styled/Global.styled'
 
 const App = () => {
   const isAuth = useSelector((state: any) => state.auth.isAuth)
@@ -26,7 +28,16 @@ const App = () => {
         <Route path={routes.INITIAL_ROUTE} element={<Navigate to={routes.LOGIN_ROUTE} />} />
         <Route path={routes.LOGIN_ROUTE} element={<Login />} />
         <Route path={routes.REGISTER_ROUTE} element={<Register />} />
+
+        {/* 404 page */}
         <Route path={routes.ANY_ROUTE} element={<Navigate to={routes.LOGIN_ROUTE} />} />
+
+        {/* <Route path={routes.ANY_ROUTE} element={
+            <BaseTitle>404 ТАКОЙ СТРАНИЦЫ НЕСУЩЕСТВУЕТ{' '}
+              <BaseLink to={routes.LOGIN_ROUTE}>перейти на страницу входа</BaseLink>
+            </BaseTitle>
+          } 
+        /> */}
       </Routes>
     )
   }
@@ -34,7 +45,18 @@ const App = () => {
     <Routes>
       <Route path={routes.INITIAL_ROUTE} element={<Navigate to={routes.CHAT_ROUTE} />} />
       <Route path={routes.CHAT_ROUTE} element={<Chat />} />
+      <Route path={routes.SETTINGS_ROUTE} element={<Settings />} />
+
+      {/* 404 page */}
       <Route path={routes.ANY_ROUTE} element={<Navigate to={routes.CHAT_ROUTE} />} />
+
+      {/* <Route path={routes.ANY_ROUTE} element={
+          <BaseTitle>404 ТАКОЙ СТРАНИЦЫ НЕСУЩЕСТВУЕТ{' '}
+            <BaseLink to={routes.CHAT_ROUTE}>перейти на главную страницу</BaseLink>
+          </BaseTitle>
+        } 
+      /> */}
+
     </Routes>
   )
 }

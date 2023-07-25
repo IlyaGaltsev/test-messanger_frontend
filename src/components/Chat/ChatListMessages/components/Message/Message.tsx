@@ -1,5 +1,5 @@
 import { getNormalizeDate } from '@/utils/globalMethods/getNormalizeDate'
-import { errorsHandler } from '@/utils/globalMethods/errorsHandler'
+import { errorsHandler } from '@/utils/globalMethods/eventHandlers'
 import $axios from '@/utils/setupAxios'
 
 import { TMessageComponent } from '@/types'

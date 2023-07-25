@@ -1,3 +1,4 @@
+import { AvatarSize } from '@/utils/enums'
 import { MouseEventHandler } from 'react'
 
 export type TLogin = {
@@ -21,10 +22,13 @@ export type TUser = {
   address: string
 }
 
-export type TAvatar = Pick<TUser, 'avatarPath'>
+export type TAvatar = Pick<TUser, 'avatarPath'> & {
+  size?: AvatarSize
+}
 
 export type TChatTopBar = {
   data: TUser
+  onSettings: MouseEventHandler<SVGElement>
   onLogout: MouseEventHandler<SVGElement>
 }
 
@@ -46,4 +50,8 @@ export type TChatListMessages = {
 
 export type TMessageComponent = TMessage & {
   isCurrentUser: boolean
+}
+
+export type TBackButton = {
+  to?: string
 }

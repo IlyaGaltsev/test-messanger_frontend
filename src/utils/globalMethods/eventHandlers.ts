@@ -5,6 +5,10 @@ export const errorsHandler = (message: string) => {
   toast.error(message ?? 'Произошла ошибка', toastDefaultStyle)
 }
 
+export const successHandler = (message: string) => {
+  toast.success(message ?? "Всё прошло успешно", toastDefaultStyle);
+}
+
 export const errorsHandlerWithValidate = (error: any, setError: any) => {
   const initialMessage: string = error.response.data.message ?? ''
 

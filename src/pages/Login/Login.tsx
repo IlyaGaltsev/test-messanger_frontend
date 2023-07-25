@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 import { setAuth } from '@/store/slice/authSlice'
 import type { TLogin } from '@/types'
 
-import { errorsHandlerWithValidate } from '@/utils/globalMethods/errorsHandler'
+import { errorsHandlerWithValidate } from '@/utils/globalMethods/eventHandlers'
 import { setToken } from '@/utils/globalMethods/tokenMethods'
 import { optionsLogin } from '@/utils/customInputsOptions'
 import { REGISTER_ROUTE } from '@/utils/routes'

@@ -3,7 +3,7 @@ import { setAuth } from '@/store/slice/authSlice'
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 
-import { errorsHandler } from '@/utils/globalMethods/errorsHandler'
+import { errorsHandler } from '@/utils/globalMethods/eventHandlers'
 import $axios from '@/utils/setupAxios'
 import { TMessage } from '@/types'
 
@@ -14,8 +14,11 @@ import Loader from '@/components/Loader'
 
 import { BaseTitle } from '@/styled/Global.styled'
 import * as S from './Chat.styled'
+import { useNavigate } from 'react-router-dom'
+import { SETTINGS_ROUTE } from '@/utils/routes'
 
 const Chat = () => {
+  const navigate = useNavigate()
   const dispatch = useDispatch()
   const [messages, setMessages] = useState<TMessage[] | []>([])
   const {
@@ -24,6 +27,10 @@ const Chat = () => {
     isLoading: isLoadingUserProfile
   } = useGetUserProfileQuery()
 
+  const onSettings = () => {
+    navigate(SETTINGS_ROUTE)
+  }
+  
   const logout = () => {
     localStorage.removeItem('access_token')
     dispatch(setAuth(false))
@@ -66,6 +73,7 @@ const Chat = () => {
     <S.CardChatWrapper>
       <ChatTopBar
         data={userProfile}
+        onSettings={onSettings}
         onLogout={logout}
       />
       <ChatListMessages data={messages} />
