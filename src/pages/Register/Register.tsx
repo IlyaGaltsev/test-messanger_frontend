@@ -3,7 +3,7 @@ import { TRegister, TLogin } from '@/types'
 import { useDispatch } from 'react-redux'
 import { useForm } from 'react-hook-form'
 
-import { errorsHandler, errorsHandlerWithValidate } from '@/utils/globalMethods/errorsHandler'
+import { errorsHandler, errorsHandlerWithValidate } from '@/utils/globalMethods/eventHandlers'
 import { optionsRegister } from '@/utils/customInputsOptions'
 import { setToken } from '@/utils/globalMethods/tokenMethods'
 import { LOGIN_ROUTE } from '@/utils/routes'

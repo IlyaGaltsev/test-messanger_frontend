@@ -1,11 +1,11 @@
 import { ToastOptions } from 'react-toastify'
 
 export const toastDefaultStyle: ToastOptions = {
-  position: 'bottom-center',
-  autoClose: 5000,
-  hideProgressBar: false,
+  position: 'top-right',
+  autoClose: 2000,
+  hideProgressBar: true,
   closeOnClick: true,
-  pauseOnHover: false,
+  pauseOnHover: true,
   draggable: true,
   progress: undefined,
   theme: 'dark'

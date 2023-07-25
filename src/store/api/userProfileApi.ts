@@ -1,3 +1,4 @@
+import { TUser } from '@/types'
 import { getToken } from '@/utils/globalMethods/tokenMethods'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
@@ -9,7 +10,7 @@ const setHeaders = (headers: any) => {
   if (token) {
     headers.set('Authorization', `Bearer ${token}`)
   }
-  
+
   return headers
 }
 
@@ -21,10 +22,18 @@ const userProfileApi: any = createApi({
   }),
   endpoints: builder => ({
     getUserProfile: builder.query({
-      query: () => '/api/user/view',
+      query: () => '/api/user/view'
+    }),
+    // заготовка под переход c axios
+    updateUser: builder.mutation<TUser, Partial<TUser>>({
+      query: (data: TUser) => ({
+        url: '/api/user/update',
+        method: 'PUT',
+        body: data
+      })
     })
   })
 })
 
-export const { useGetUserProfileQuery } = userProfileApi
+export const { useGetUserProfileQuery, useUpdateUserMutation } = userProfileApi
 export default userProfileApi
