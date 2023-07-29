@@ -23,7 +23,7 @@ const BackButton = ({ to }: TBackButton) => {
     >
       <IoIosArrowBack
         {...defaultIconStyle}
-        style={{ marginRight: 8 }}
+        style={{ marginRight: 8, color: 'inherit' }}
       />
       Назад
     </S.LinkWrapper>

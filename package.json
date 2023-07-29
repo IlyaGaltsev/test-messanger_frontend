@@ -30,7 +30,7 @@
   },
   "scripts": {
     "start": "craco start",
-    "build": "craco build",
+    "build": "REACT_APP_API_BASE_URL=http://194.67.109.20:5000/ craco build",
     "test": "craco test",
     "eject": "craco eject"
   },

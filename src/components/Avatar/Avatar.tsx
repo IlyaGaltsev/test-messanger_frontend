@@ -19,7 +19,9 @@ const Avatar = ({ avatarPath, size = AvatarSize.default }: TAvatar) => {
   }
   return (
     <S.Wrapper size={size}>
-      <S.Image src={getAvatar()} />
+      <S.ImageWrapper size={size}>
+        <S.Image src={getAvatar()} />
+      </S.ImageWrapper>
     </S.Wrapper>
   )
 }

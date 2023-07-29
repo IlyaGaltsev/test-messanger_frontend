@@ -1,11 +1,14 @@
 import { Link as ReactRouterDomLink } from 'react-router-dom'
-import { createGlobalStyle, styled } from 'styled-components'
+import { createGlobalStyle, css, styled } from 'styled-components'
+import { breakpoints } from './breakpoints.styled'
 import {
   BACKGROUND_COLOR,
   SECOUNDARY_COLOR,
   FONT_PRIMARY_COLOR,
   PRIMARY_COLOR,
-  ACCENT_COLOR
+  ACCENT_COLOR,
+  BUTTON_HOVER_COLOR,
+  BUTTON_ACTIVE_COLOR
 } from './colors.styled'
 import type { TInput } from './types'
 
@@ -108,6 +111,7 @@ export const GlobalStyle = createGlobalStyle`
     flex-direction: column;
     align-items: center;
     font-family: "Monseratt", "Helvetica Neue", sans-serif;
+    padding: 0 12px;
   }
 `
 
@@ -148,12 +152,39 @@ export const BaseInput = styled.input<TInput>`
   margin-right: ${({ marginright }) => (marginright ? `${marginright}px` : 0)};
 `
 
+export const baseButtonEventStyle = css`
+  @media (min-width: ${breakpoints.tablet}) {
+    &:hover {
+      background: ${BUTTON_HOVER_COLOR};
+    }
+  }
+
+  &:active {
+    background: ${BUTTON_ACTIVE_COLOR};
+  }
+`
+
+export const baseLinkEventStyle = css`
+  @media (min-width: ${breakpoints.tablet}) {
+    &:hover {
+      color: ${BUTTON_HOVER_COLOR};
+    }
+  }
+
+  &:active {
+    color: ${BUTTON_ACTIVE_COLOR};
+  }
+`
+
 export const BaseAccentButton = styled.button`
   background: ${ACCENT_COLOR};
   color: ${FONT_PRIMARY_COLOR};
   font-size: 16px;
   height: 46px;
   border-radius: 10px;
+  cursor: pointer;
+
+  ${baseButtonEventStyle}
 `
 
 export const BaseLink = styled(ReactRouterDomLink)`
@@ -161,6 +192,9 @@ export const BaseLink = styled(ReactRouterDomLink)`
   font-size: 16px;
   margin-top: 20px;
   align-self: center;
+  cursor: pointer;
+
+  ${baseLinkEventStyle}
 `
 
 export const AuthFormWrapper = styled.form`

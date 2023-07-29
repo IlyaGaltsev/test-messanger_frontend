@@ -65,23 +65,27 @@ const Settings = () => {
       <S.Title>{data.name}</S.Title>
       <S.UserOptions onSubmit={onSubmit}>
         <CustomInput
-          placeholder="Введите электронную почту"
+          placeholder="Введите имя"
           params={{ ...register('name') }}
           error={errors.name?.message}
           style={styleInput}
-        />
-        <CustomInput
-          placeholder="Введите URL изображения"
-          params={{ ...register('avatarPath') }}
-          error={errors.avatarPath?.message}
-          style={styleInput}
+          title="Ваше имя"
         />
         <CustomInput
           placeholder="Введите адрес"
           params={{ ...register('address') }}
           error={errors.address?.message}
           style={styleInput}
+          title="Ваш адрес"
         />
+        <CustomInput
+          placeholder="Введите URL изображения"
+          params={{ ...register('avatarPath') }}
+          error={errors.avatarPath?.message}
+          style={styleInput}
+          title="URL изображения"
+        />
+
         <S.ButtonSave>Сохранить</S.ButtonSave>
       </S.UserOptions>
     </S.SettingsWrapper>

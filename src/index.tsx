@@ -1,4 +1,4 @@
-import { BrowserRouter } from 'react-router-dom'
+import { HashRouter } from 'react-router-dom'
 import ReactDOM from 'react-dom/client'
 import React from 'react'
 import App from './App'
@@ -13,10 +13,10 @@ import { ToastContainer } from 'react-toastify'
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <Provider store={store}>
-    <BrowserRouter>
+    <HashRouter>
       <GlobalStyle />
       <App />
       <ToastContainer />
-    </BrowserRouter>
+    </HashRouter>
   </Provider>
 )
