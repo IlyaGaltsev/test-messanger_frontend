@@ -30,7 +30,7 @@ const Chat = () => {
   const onSettings = () => {
     navigate(SETTINGS_ROUTE)
   }
-  
+
   const logout = () => {
     localStorage.removeItem('access_token')
     dispatch(setAuth(false))
