@@ -10,3 +10,6 @@ export const FONT_SECOUNDARY_COLOR = 'rgba(255, 255, 255, 0.25)'
 export const SUCCESS_COLOR = '#00FF75'
 export const ERROR_COLOR = 'red'
 export const INPUT_ERROR_COLOR = '#EA5858'
+
+export const BUTTON_HOVER_COLOR = '#000AFF'
+export const BUTTON_ACTIVE_COLOR = '#6A9CFF'

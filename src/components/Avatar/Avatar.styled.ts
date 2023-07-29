@@ -9,8 +9,8 @@ export const Wrapper = styled.div<TAvatarStyleProps>`
   margin-right: ${props => (props.size === AvatarSize.large ? '0' : '24px')};
   margin-bottom: ${props => (props.size === AvatarSize.large ? '24px' : '0')};
   position: relative;
-  max-width: ${props => props.size === AvatarSize.large ? '124px' : props.size === AvatarSize.default ? '76px' : '52px'};
-  max-height: ${props => props.size === AvatarSize.large ? '124px' : props.size === AvatarSize.default ? '76px' : '52px'};
+  width: ${props => props.size === AvatarSize.large ? '124px' : props.size === AvatarSize.default ? '76px' : '52px'};
+  height: ${props => props.size === AvatarSize.large ? '124px' : props.size === AvatarSize.default ? '76px' : '52px'};
 
   ${props => props.size === AvatarSize.default 
     ?`&:after {
@@ -28,8 +28,22 @@ export const Wrapper = styled.div<TAvatarStyleProps>`
   
 `
 
+export const ImageWrapper = styled.div<TAvatarStyleProps>`
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: ${props => props.size === AvatarSize.large ? '124px' : props.size === AvatarSize.default ? '76px' : '52px'};
+  height: ${props => props.size === AvatarSize.large ? '124px' : props.size === AvatarSize.default ? '76px' : '52px'};
+overflow: hidden;
+border-radius: 50%;
+
+
+  
+`
+
 export const Image = styled.img`
   width: 100%;
+  height: 100%;
   object-fit: cover;
-  border-radius: 50%;
+
 `
