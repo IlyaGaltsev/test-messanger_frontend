@@ -9,7 +9,7 @@ import * as S from './Avatar.styled'
  * можно передавать ссылку из сети на изображение
  */
 
-const Avatar = ({ avatarPath, size = AvatarSize.default }: TAvatar) => {
+const Avatar = ({ avatarPath, style, size = AvatarSize.default }: TAvatar) => {
   const getAvatar = () => {
     if (avatarPath.includes('http')) {
       return avatarPath
@@ -18,7 +18,10 @@ const Avatar = ({ avatarPath, size = AvatarSize.default }: TAvatar) => {
     return defaultAvatar
   }
   return (
-    <S.Wrapper size={size}>
+    <S.Wrapper
+      size={size}
+      style={style}
+    >
       <S.ImageWrapper size={size}>
         <S.Image src={getAvatar()} />
       </S.ImageWrapper>

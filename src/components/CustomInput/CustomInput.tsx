@@ -14,13 +14,15 @@ const CustomInput = ({ placeholder, params, error, type, style, title }: ICustom
   return (
     <S.CustomInputWrapper style={style}>
       {title ? <S.CustomInputTitle>{title}</S.CustomInputTitle> : null}
-      <S.CustomInputElement
-        {...params}
-        placeholder={placeholder}
-        type={type ? type : 'text'}
-        error={error ? 1 : 0}
-      />
-      {error ? <S.CustomInputErrorMessage>{error}</S.CustomInputErrorMessage> : null}
+      <S.CustomInputWithErrors>
+        <S.CustomInputElement
+          {...params}
+          placeholder={placeholder}
+          type={type ? type : 'text'}
+          error={error ? 1 : 0}
+        />
+        {error ? <S.CustomInputErrorMessage>{error}</S.CustomInputErrorMessage> : null}
+      </S.CustomInputWithErrors>
     </S.CustomInputWrapper>
   )
 }

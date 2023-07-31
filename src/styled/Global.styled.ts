@@ -15,6 +15,9 @@ import type { TInput } from './types'
 export const GlobalStyle = createGlobalStyle`
   html, body, #root{
     background-color: ${BACKGROUND_COLOR};
+    max-height: 100dvh;
+    overscroll-behavior-y: none;
+    width: 100%;
   }
 
   code {
@@ -23,6 +26,12 @@ export const GlobalStyle = createGlobalStyle`
   
   * {
     box-sizing: border-box;
+    scrollbar-gutter: stable;
+  }
+  
+  body {
+    display: flex;
+    justify-content: center;
   }
   
   html,
@@ -112,6 +121,10 @@ export const GlobalStyle = createGlobalStyle`
     align-items: center;
     font-family: "Monseratt", "Helvetica Neue", sans-serif;
     padding: 0 12px;
+
+    @media (max-width: ${breakpoints.mobile}) {
+      padding: 0;
+    }
   }
 `
 
@@ -124,6 +137,13 @@ export const BaseWrapper = styled.div`
   max-width: 500px;
   width: 100%;
   background: ${SECOUNDARY_COLOR};
+
+  @media (max-width: ${breakpoints.mobile}) {
+    margin: 0;
+    padding: 16px 12px;
+    border-radius: 0;
+
+  }
 `
 
 export const BaseTitle = styled.h2`
@@ -131,12 +151,22 @@ export const BaseTitle = styled.h2`
   font-size: 24px;
   font-weight: 700;
   margin-bottom: 16px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
 `
 
 export const BaseSubTitle = styled.p`
   color: ${FONT_PRIMARY_COLOR};
   font-weight: 400;
   margin-bottom: 20px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
 `
 
 export const BaseInput = styled.input<TInput>`
@@ -206,4 +236,16 @@ export const AuthFormWrapper = styled.form`
   max-width: 500px;
   width: 100%;
   background: ${SECOUNDARY_COLOR};
+`
+
+// при подключении указать max-width тексту
+export const hiddenElipses = css`
+  /* white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; */
+  width: inherit;
+  /* max-width: 100px; */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `
