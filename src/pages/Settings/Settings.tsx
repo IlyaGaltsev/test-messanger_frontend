@@ -6,6 +6,7 @@ import { useGetUserProfileQuery } from '@/store/api/userProfileApi'
 import { styleInput } from '@/styled/customInput.styled'
 import { BaseTitle } from '@/styled/Global.styled'
 import { TUser } from '@/types'
+import { optionsUpdateProfile } from '@/utils/customInputsOptions'
 import { AvatarSize } from '@/utils/enums'
 import { errorsHandler, successHandler } from '@/utils/globalMethods/eventHandlers'
 import $axios from '@/utils/setupAxios'
@@ -61,12 +62,13 @@ const Settings = () => {
       <Avatar
         avatarPath={data.avatarPath}
         size={AvatarSize.large}
+        style={{ marginBottom: 16 }}
       />
       <S.Title>{data.name}</S.Title>
       <S.UserOptions onSubmit={onSubmit}>
         <CustomInput
           placeholder="Введите имя"
-          params={{ ...register('name') }}
+          params={{ ...register('name', optionsUpdateProfile.name) }}
           error={errors.name?.message}
           style={styleInput}
           title="Ваше имя"

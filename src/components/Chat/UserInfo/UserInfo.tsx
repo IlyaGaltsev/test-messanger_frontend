@@ -5,7 +5,10 @@ import * as S from './UserInfo.styled'
 const UserInfo = ({ name, email, createdAt, updatedAt, avatarPath, address }: TUser) => {
   return (
     <S.Wrapper>
-      <Avatar avatarPath={avatarPath} />
+      <Avatar
+        avatarPath={avatarPath}
+        style={{ marginRight: 12 }}
+      />
 
       <S.WrapperTypography>
         <S.Title>{name}</S.Title>

@@ -11,13 +11,13 @@ export const MessageWrapper = styled.div<TMessageProps>`
   margin-bottom: 28px;
   display: flex;
   flex-direction: column;
+  max-width: 60%;
 
   align-items: ${props => (props.iscurrentuser ? 'flex-end' : 'flex-start')};
 `
 
 export const MessageBody = styled.div<TMessageProps>`
   cursor: pointer;
-  max-width: 60%;
   position: relative;
   border-radius: 10px;
   background: ${props => (props.iscurrentuser ? ACCENT_COLOR : PRIMARY_COLOR)};

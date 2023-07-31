@@ -38,3 +38,17 @@ export const optionsRegister = {
     }
   }
 }
+
+export const optionsUpdateProfile = {
+  name: {
+    required: 'Поле пустое',
+    minLength: {
+      value: 5,
+      message: 'Минимальная длинна 5 символов'
+    },
+    maxLength: {
+      value: 16,
+      message: 'Максимальная длинна 16 символов'
+    }
+  },
+}

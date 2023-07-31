@@ -1,5 +1,5 @@
 import { AvatarSize } from '@/utils/enums'
-import { MouseEventHandler } from 'react'
+import { CSSProperties, MouseEventHandler } from 'react'
 
 export type TLogin = {
   email: string
@@ -24,6 +24,7 @@ export type TUser = {
 
 export type TAvatar = Pick<TUser, 'avatarPath'> & {
   size?: AvatarSize
+  style?: CSSProperties
 }
 
 export type TChatTopBar = {

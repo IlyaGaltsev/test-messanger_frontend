@@ -10,7 +10,6 @@ import Settings from '@/pages/Settings'
 import Register from '@/pages/Register'
 import Login from '@/pages/Login'
 import Chat from '@/pages/Chat'
-import { BaseLink, BaseTitle } from '@/styled/Global.styled'
 
 const App = () => {
   const isAuth = useSelector((state: any) => state.auth.isAuth)

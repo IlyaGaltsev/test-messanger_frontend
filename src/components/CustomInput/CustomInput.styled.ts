@@ -13,7 +13,10 @@ type TCustomInputProps = {
 export const CustomInputWrapper = styled.div`
   width: 100%;
   display: flex;
-  align-items: center;
+`
+
+export const CustomInputWithErrors = styled.div`
+  width: 100%;
 `
 
 export const CustomInputElement = styled(BaseInput)<TCustomInputProps>`
@@ -36,4 +39,5 @@ export const CustomInputTitle = styled(BaseSubTitle)`
   margin: 0;
   max-width: 300px;
   width: 100%;
+  margin-top: 12px;
 `
