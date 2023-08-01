@@ -6,7 +6,7 @@ export const errorsHandler = (message: string) => {
 }
 
 export const successHandler = (message: string) => {
-  toast.success(message ?? "Всё прошло успешно", toastDefaultStyle);
+  toast.success(message ?? 'Всё прошло успешно', toastDefaultStyle)
 }
 
 export const errorsHandlerWithValidate = (error: any, setError: any) => {
@@ -31,4 +31,12 @@ export const errorsHandlerWithValidate = (error: any, setError: any) => {
   }
 
   errorsHandler(error.response.data.message)
+}
+
+/**
+ * 401 errors
+ */
+export const unAutorizedExceptionHandler = () => {
+  localStorage.removeItem('access_token')
+  window.location.reload()
 }
