@@ -19,7 +19,9 @@ const ChatSendForm = ({ sendMessage }: TChatSendForm) => {
       return
     }
 
+
     sendMessage(trimValue)
+    setValue('')
   }
 
   return (
