@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 
 import { errorsHandler } from '@/utils/globalMethods/eventHandlers'
-import $axios from '@/utils/setupAxios'
+import $axios, { API_BASE_URL } from '@/utils/setupAxios'
 import { TMessage } from '@/types'
 
 import ChatListMessages from '@/components/Chat/ChatListMessages'
@@ -16,6 +16,10 @@ import { BaseTitle } from '@/styled/Global.styled'
 import * as S from './Chat.styled'
 import { useNavigate } from 'react-router-dom'
 import { SETTINGS_ROUTE } from '@/utils/routes'
+import { io } from 'socket.io-client'
+
+const socket = io(API_BASE_URL ?? '')
+
 
 const Chat = () => {
   const navigate = useNavigate()
@@ -36,26 +40,21 @@ const Chat = () => {
     dispatch(setAuth(false))
   }
 
-  const sendMessage = async (message: string) => {
-    await $axios
-      .post('/api/message/create', {
-        userId: userProfile.id,
-        message: message
-      })
-      .then(() => window.location.reload())
-      .catch(error => errorsHandler(error.response.data.message))
+  const sendMessage = (message: string) => {
+    socket.emit('createMessage', { userId: userProfile.id, message: message }, () => {})
   }
 
   useEffect(() => {
-    const getMessages = async () => {
-      await $axios
-        .get('/api/message/all')
-        .then(data => setMessages(data.data))
-        .catch(error => errorsHandler(error.response.data.message))
-    }
+    socket.emit('allMessage', {}, (messagesAll: any) => {
+      setMessages(messagesAll)
+    })
 
-    getMessages()
+   
   }, [])
+
+  socket.on('messages', data => {
+    setMessages(prev => prev = data)
+  })
 
   if (isLoadingUserProfile) {
     return <Loader />
