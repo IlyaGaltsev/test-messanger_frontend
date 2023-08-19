@@ -1,4 +1,4 @@
-import { setAuth } from '@/store/slice/authSlice'
+import { setAuth } from '@/store/slices/authSlice'
 import { TRegister, TLogin } from '@/types'
 import { useDispatch } from 'react-redux'
 import { useForm } from 'react-hook-form'

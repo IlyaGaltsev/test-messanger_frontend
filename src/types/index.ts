@@ -43,6 +43,7 @@ export type TMessage = {
   message: string
   updatedAt: string
   user: TUser
+  room_id: number
 }
 
 export type TChatListMessages = {

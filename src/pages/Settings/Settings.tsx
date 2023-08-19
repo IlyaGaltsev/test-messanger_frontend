@@ -2,7 +2,6 @@ import Avatar from '@/components/Avatar'
 import BackButton from '@/components/BackButton'
 import CustomInput from '@/components/CustomInput'
 import Loader from '@/components/Loader'
-import { useGetUserProfileQuery } from '@/store/api/userProfileApi'
 import { styleInput } from '@/styled/customInput.styled'
 import { BaseTitle } from '@/styled/Global.styled'
 import { TUser } from '@/types'
@@ -12,10 +11,11 @@ import { errorsHandler, successHandler } from '@/utils/globalMethods/eventHandle
 import $axios from '@/utils/setupAxios'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
+import { useSelector } from 'react-redux'
 import * as S from './Settings.styled'
 
 const Settings = () => {
-  const { data, isLoading, isError } = useGetUserProfileQuery()
+  const { data, isLoading, isError } = useSelector((state: any) => state.user)
 
   const {
     register,

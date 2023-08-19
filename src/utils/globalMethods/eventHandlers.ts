@@ -1,5 +1,6 @@
 import { toastDefaultStyle } from '@/styled/toast.styled'
 import { toast } from 'react-toastify'
+import { CHAT_ROUTE } from '../routes'
 
 export const errorsHandler = (message: string) => {
   toast.error(message ?? 'Произошла ошибка', toastDefaultStyle)
@@ -38,5 +39,5 @@ export const errorsHandlerWithValidate = (error: any, setError: any) => {
  */
 export const unAutorizedExceptionHandler = () => {
   localStorage.removeItem('access_token')
-  window.location.reload()
+  window.location.href = CHAT_ROUTE
 }

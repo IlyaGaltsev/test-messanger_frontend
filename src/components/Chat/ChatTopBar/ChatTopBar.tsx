@@ -1,19 +1,20 @@
-import { IoLogOut, IoSettings } from 'react-icons/io5'
-import { TChatTopBar } from '@/types'
-import UserInfo from '../UserInfo'
+import { VscGear } from 'react-icons/vsc'
+import ChatInfo from '../ChatInfo'
 
-import { defaultIconStyle } from '@/styled/icons.styled'
-import * as S from './ChatTopBar.styled'
+import styles from './ChatTopBar.module.css'
 
-const ChatTopBar = ({ data, onSettings, onLogout }: TChatTopBar) => {
+const ChatTopBar = ({ data, updateRoom }: any) => {
   return (
-    <S.Wrapper>
-      <UserInfo {...data} />
-      <S.WrapperTools>
-        <IoSettings onClick={onSettings} {...defaultIconStyle} />
-        <IoLogOut onClick={onLogout} {...defaultIconStyle} />
-      </S.WrapperTools>
-    </S.Wrapper>
+    <div className={styles.wrapper}>
+      <ChatInfo
+        name={data.name}
+        subname={data.subname}
+        avatarPath={data.avatarPath}
+      />
+      <div className={styles.menu}>
+        <VscGear onClick={updateRoom} size={24}/>
+      </div>
+    </div>
   )
 }
 

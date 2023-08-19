@@ -1,7 +1,6 @@
-import { useGetUserProfileQuery } from '@/store/api/userProfileApi'
-import { setAuth } from '@/store/slice/authSlice'
+import { setAuth } from '@/store/slices/authSlice'
 import { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { errorsHandler } from '@/utils/globalMethods/eventHandlers'
 import $axios, { API_BASE_URL } from '@/utils/setupAxios'
@@ -20,7 +19,6 @@ import { io } from 'socket.io-client'
 
 const socket = io(API_BASE_URL ?? '')
 
-
 const Chat = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -29,7 +27,9 @@ const Chat = () => {
     data: userProfile,
     isError: isErrorUserProfile,
     isLoading: isLoadingUserProfile
-  } = useGetUserProfileQuery()
+  } = useSelector((state: any) => state.user)
+
+  
 
   const onSettings = () => {
     navigate(SETTINGS_ROUTE)
@@ -48,12 +48,10 @@ const Chat = () => {
     socket.emit('allMessage', {}, (messagesAll: any) => {
       setMessages(messagesAll)
     })
-
-   
   }, [])
 
   socket.on('messages', data => {
-    setMessages(prev => prev = data)
+    setMessages(prev => (prev = data))
   })
 
   if (isLoadingUserProfile) {

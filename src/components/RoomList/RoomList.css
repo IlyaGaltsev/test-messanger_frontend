@@ -1,0 +1,35 @@
+.room-list__wrapper {
+  border-radius: 25px;
+  background: var(--primary-color);
+  box-shadow: var(--shadow);
+  width: 100%;
+  height: 40%;
+  overflow: auto;
+  position: relative;
+}
+
+.room-list__rooms {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.room-list__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px 16px;
+  background: var(--primary-color);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.room-list__header > h2 {
+  font-size: 20px;
+}
+
+.room-list__header > button {
+  cursor: pointer;
+  background: transparent;
+}

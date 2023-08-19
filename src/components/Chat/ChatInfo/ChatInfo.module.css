@@ -1,0 +1,15 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.typography {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.typography > h2 {
+  font-size: 20px;
+}

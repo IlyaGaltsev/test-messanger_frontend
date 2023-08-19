@@ -1,0 +1,13 @@
+.messages-list__wrapper {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  overflow-y: auto;
+  height: calc(100dvh - 128px - 64px);
+}
+
+@media (max-width: 1200px) {
+  .messages-list__wrapper {
+    height: calc(100dvh - 128px - 40px);
+  }
+}

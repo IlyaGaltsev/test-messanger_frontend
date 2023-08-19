@@ -1,0 +1,14 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 12px;
+}
+
+.wrapper > input {
+  background-color: var(--third-color);
+  height: 48px;
+  width: 100%;
+  padding: 0 20px;
+  border-radius: 12px;
+}

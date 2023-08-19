@@ -31,7 +31,7 @@ const userProfileApi: any = createApi({
         method: 'PUT',
         body: data
       })
-    })
+    }),
   })
 })
 

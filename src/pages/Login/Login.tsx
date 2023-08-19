@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 
-import { setAuth } from '@/store/slice/authSlice'
+import { setAuth } from '@/store/slices/authSlice'
 import type { TLogin } from '@/types'
 
 import { errorsHandlerWithValidate } from '@/utils/globalMethods/eventHandlers'

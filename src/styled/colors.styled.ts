@@ -1,10 +1,10 @@
 export const BACKGROUND_COLOR = '#222'
 
-export const ACCENT_COLOR = '#1A66FF'
-export const PRIMARY_COLOR = '#1B1B1B'
+export const ACCENT_COLOR = '#6e00ff'
+export const PRIMARY_COLOR = 'rgba(239, 246, 252, 0.87)'
 export const SECOUNDARY_COLOR = '#0D0D0D'
 
-export const FONT_PRIMARY_COLOR = '#FFFFFF'
+export const FONT_PRIMARY_COLOR = '#000'
 export const FONT_SECOUNDARY_COLOR = 'rgba(255, 255, 255, 0.25)'
 
 export const SUCCESS_COLOR = '#00FF75'

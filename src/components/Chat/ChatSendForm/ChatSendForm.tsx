@@ -2,7 +2,7 @@ import { ChangeEventHandler, FormEventHandler, useState } from 'react'
 import { TChatSendForm } from '@/types'
 import { IoSend } from 'react-icons/io5'
 
-import * as S from './ChatSendForm.styled'
+import styles from './ChatSendForm.module.css'
 
 const ChatSendForm = ({ sendMessage }: TChatSendForm) => {
   const [value, setValue] = useState('')
@@ -19,22 +19,24 @@ const ChatSendForm = ({ sendMessage }: TChatSendForm) => {
       return
     }
 
-
     sendMessage(trimValue)
     setValue('')
   }
 
   return (
-    <S.Wrapper onSubmit={handleSubmitForm}>
-      <S.Input
+    <form
+      className={styles.wrapper}
+      onSubmit={handleSubmitForm}
+    >
+      <input
         value={value}
         onChange={handleChangeInput}
         placeholder="Введите текст сообщения"
       />
-      <S.AccentButton>
+      <button className="accent-button">
         <IoSend />
-      </S.AccentButton>
-    </S.Wrapper>
+      </button>
+    </form>
   )
 }
 

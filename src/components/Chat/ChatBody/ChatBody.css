@@ -1,0 +1,20 @@
+.chat-body__wrapper {
+  border-radius: 25px;
+  background: var(--primary-color);
+  box-shadow: var(--shadow);
+  padding: 0 20px 20px;
+  width: 100%;
+  height: calc(100dvh - 64px);
+  overflow: hidden;
+  position: relative;
+}
+
+.chat-body__send-form {
+  width: 100%;
+}
+
+@media (max-width: 1200px) {
+  .chat-body__wrapper {
+    height: calc(100dvh - 40px);
+  }
+}
